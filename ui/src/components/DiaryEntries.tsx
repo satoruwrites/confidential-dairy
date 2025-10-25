@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useAccount } from 'wagmi';
+import { useAccount, usePublicClient } from 'wagmi';
 import { useEthersSigner } from '../hooks/useEthersSigner';
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from '../config/contracts';
-import { publicClient } from '../config/publicClient';
+// import { publicClient } from '../config/publicClient';
 import type { ZamaInstance } from '../types/zama';
 import { decryptWithKey } from '../utils/diaryCrypto';
 import '../styles/DiaryEntries.css';
@@ -33,6 +33,7 @@ const EMPTY_STATE_TEXT = 'Your diary is still encrypted silence. Start writing t
 export function DiaryEntries({ refreshKey, zamaInstance, zamaLoading, zamaError }: DiaryEntriesProps) {
   const { address } = useAccount();
   const signerPromise = useEthersSigner();
+  const publicClient = usePublicClient();
 
   const [entries, setEntries] = useState<DiaryEntry[]>([]);
   const [loading, setLoading] = useState(false);
@@ -48,7 +49,7 @@ export function DiaryEntries({ refreshKey, zamaInstance, zamaLoading, zamaError 
     let cancelled = false;
 
     const fetchEntries = async () => {
-      if (!address) {
+      if (!address || !publicClient) {
         setEntries([]);
         return;
       }
@@ -96,7 +97,7 @@ export function DiaryEntries({ refreshKey, zamaInstance, zamaLoading, zamaError 
     return () => {
       cancelled = true;
     };
-  }, [address, refreshKey]);
+  }, [address, publicClient, refreshKey]);
 
   const decryptEntry = async (entry: DiaryEntry) => {
     if (!zamaInstance) {
