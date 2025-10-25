@@ -1,0 +1,128 @@
+.diary-app {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+.diary-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.diary-card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 20px 45px -24px rgba(15, 23, 42, 0.25);
+  padding: 2rem;
+}
+
+.diary-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.75rem;
+}
+
+.diary-tab {
+  padding: 0.6rem 1.4rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: #6b7280;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.diary-tab:hover {
+  color: #111827;
+  background-color: #f3f4f6;
+}
+
+.diary-tab.active {
+  border-color: #6366f1;
+  background-color: #eef2ff;
+  color: #4338ca;
+  box-shadow: 0 8px 20px -12px rgba(79, 70, 229, 0.45);
+}
+
+.diary-content {
+  margin-top: 2rem;
+}
+
+.diary-status {
+  margin: 0 0 1rem;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.diary-error-text {
+  margin: 0 0 1rem;
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.diary-error {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  font-weight: 500;
+}
+
+.diary-placeholder {
+  padding: 2rem;
+  border-radius: 0.75rem;
+  border: 1px dashed #cbd5f5;
+  background-color: #f8fafc;
+  text-align: center;
+}
+
+.diary-placeholder-text {
+  margin: 0;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.diary-submit {
+  appearance: none;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.9rem 1.4rem;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.diary-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.diary-submit:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -18px rgba(79, 70, 229, 0.6);
+}
+
+@media (max-width: 640px) {
+  .diary-card {
+    padding: 1.5rem;
+  }
+
+  .diary-tabs {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .diary-tab {
+    width: 100%;
+    text-align: center;
+  }
+}
