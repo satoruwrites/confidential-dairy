@@ -6,16 +6,27 @@ import "@typechain/hardhat";
 import "hardhat-deploy";
 import "hardhat-gas-reporter";
 import type { HardhatUserConfig } from "hardhat/config";
-import { vars } from "hardhat/config";
 import "solidity-coverage";
+
+import * as dotenv from "dotenv";
+dotenv.config();
 
 import "./tasks/accounts";
 import "./tasks/confidentialDiary";
 
-// Run 'npx hardhat vars setup' to see the list of variables that need to be set
+const DEFAULT_MNEMONIC = "test test test test test test test test test test test junk";
+const MNEMONIC = process.env.MNEMONIC ?? DEFAULT_MNEMONIC;
+const PRIVATE_KEY = process.env.PRIVATE_KEY ?? "";
+const INFURA_API_KEY = process.env.INFURA_API_KEY ?? "";
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY ?? "";
 
-const MNEMONIC: string = vars.get("MNEMONIC", "test test test test test test test test test test test junk");
-const INFURA_API_KEY: string = vars.get("INFURA_API_KEY", "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+if (!INFURA_API_KEY || INFURA_API_KEY.trim().length === 0) {
+  throw new Error("INFURA_API_KEY is not configured");
+}
+
+if (!PRIVATE_KEY || PRIVATE_KEY.trim().length === 0) {
+  throw new Error("PRIVATE_KEY is not configured");
+}
 
 const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
@@ -24,7 +35,7 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: {
-      sepolia: vars.get("ETHERSCAN_API_KEY", ""),
+      sepolia: ETHERSCAN_API_KEY,
     },
   },
   gasReporter: {
@@ -49,11 +60,7 @@ const config: HardhatUserConfig = {
       url: "http://localhost:8545",
     },
     sepolia: {
-      accounts: {
-        mnemonic: MNEMONIC,
-        path: "m/44'/60'/0'/0/",
-        count: 10,
-      },
+      accounts: [PRIVATE_KEY],
       chainId: 11155111,
       url: `https://sepolia.infura.io/v3/${INFURA_API_KEY}`,
     },
