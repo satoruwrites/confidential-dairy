@@ -1,0 +1,40 @@
+.diary-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.diary-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.diary-label {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.diary-input,
+.diary-textarea {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.diary-input:focus,
+.diary-textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+  background-color: #ffffff;
+}
+
+.diary-textarea {
+  resize: vertical;
+  min-height: 160px;
+}
