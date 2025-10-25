@@ -4,7 +4,7 @@ import { useAccount } from 'wagmi';
 import { Contract, hexlify } from 'ethers';
 import { useEthersSigner } from '../hooks/useEthersSigner';
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from '../config/contracts';
-import type { ZamaInstance } from '../types/zama';
+import type { ZamaInstance } from '../type/zama';
 import { encryptWithKey, generateDiaryKey } from '../utils/diaryCrypto';
 import '../styles/DiaryComposer.css';
 

@@ -3,7 +3,7 @@ import { useAccount, usePublicClient } from 'wagmi';
 import { useEthersSigner } from '../hooks/useEthersSigner';
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from '../config/contracts';
 // import { publicClient } from '../config/publicClient';
-import type { ZamaInstance } from '../types/zama';
+import type { ZamaInstance } from '../type/zama';
 import { decryptWithKey } from '../utils/diaryCrypto';
 import '../styles/DiaryEntries.css';
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { createInstance, initSDK, SepoliaConfig } from '@zama-fhe/relayer-sdk/bundle';
-import type { ZamaInstance } from '../types/zama';
+import type { ZamaInstance } from '../type/zama';
 
 export function useZamaInstance() {
   const [instance, setInstance] = useState<ZamaInstance | null>(null);
