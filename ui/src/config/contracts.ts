@@ -1,10 +1,10 @@
-const addressFromEnv = import.meta.env.VITE_CONFIDENTIAL_DIARY_ADDRESS;
+// const addressFromEnv = import.meta.env.VITE_CONFIDENTIAL_DIARY_ADDRESS;
 
-if (!addressFromEnv) {
-  throw new Error('Missing VITE_CONFIDENTIAL_DIARY_ADDRESS environment variable');
-}
+// if (!addressFromEnv) {
+//   throw new Error('Missing VITE_CONFIDENTIAL_DIARY_ADDRESS environment variable');
+// }
 
-export const CONTRACT_ADDRESS = addressFromEnv as `0x${string}`;
+export const CONTRACT_ADDRESS = "0xb6468fEb04971f411E92abEaC792b58da07ce9f4" as `0x${string}`;
 
 // ABI copied from deployments/sepolia/ConfidentialDiary.json
 export const CONTRACT_ABI = [
